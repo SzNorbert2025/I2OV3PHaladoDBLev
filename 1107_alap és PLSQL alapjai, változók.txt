@@ -1,0 +1,284 @@
+1. Task
+
+CREATE TABLE Korok ( 
+Sugar NUMBER (4) primary key,
+Kerulet NUMBER,
+Terulet NUMBER
+);
+
+begin
+ terület :=power(sugar, 2) *PI();
+ DMBS OUTPUT_LINE(
+   'Sugar: ' || Sugar || ' Terulet: * || Terület
+);
+
+Declare
+ kerület number;
+ x number:= 1;
+ y number:= 5;
+begin
+ for i IN x,y loop
+ kerület:= 2*1*PI();
+DMBS_output.put_line('sugar: '||i||' kerület: '
+||kerület);
+end loop
+end;
+
+begin
+  for i IN x,y loop
+circumference:= 2*1*PI();
+area:= power(i, 2)*PI();
+DMBS_Output.put_line('radius: '||i||' Circumference: '
+||Circumference||' Area: '||Area);
+ END LOOP;
+END;
+
+
+CREATE TABLE Kor ( 
+Sugar NUMBER,
+Kerulet NUMBER,
+Terulet NUMBER
+);
+
+begin
+  for i IN x,y loop
+kerulet:= 2*1*PI();
+terület:= power(i, 2)*PI();
+insert into korok values(i, kerulet, terulet);
+end loop
+dmbs_output.put_line('
+
+ 
+
+
+
+
+2.Task
+
+PLSQL alapjai, változók
+
+
+4,
+DECLARE
+  t VARCHAR(20) := 'Szabó Norbert';
+begin
+  SELECT UPSER(t) INTO t FROM dual;
+dbms_output.put_line((t));
+
+SELECT LOWER(t) INTO t FROM dual;
+dbms_output.put_line((t));
+
+
+SELECT INTCAP(t) INTO t FROM dual;
+dbms_output.put_line((t));
+end;
+
+
+6,
+
+DECLARE
+ d DATE;
+BEGIN
+ SELECT sysdate INFO f FROM dual;
+dbms_output.put_line(d);
+END;
+
+
+3.Task
+
+1,
+
+DECLARE
+ x NUMBER := 25;
+BEGIN 
+ IF x < 10 THEN
+  DBMS_OUTPUT.PUT_LINE˙'A szám kisebb mint 10');
+
+ELSIF x <20 THEN
+ DBMS_OUTPUT.PUT_LINE˙'A szám 10 és 20 között van');
+
+ELSIF x <20 THEN
+ DBMS_OUTPUT.PUT_LINE˙'A szám kisebb mint 20');
+
+ELSIF x <20 THEN
+ DBMS_OUTPUT.PUT_LINE˙'A szám 20 vagy nagyobb');
+
+END IF;
+END;
+
+
+3, 
+
+DECLARE
+  beosztas VARCHAR(10) := 'dev';
+BEGIN
+   CASE
+     WHEN beosztas = 'dev' THEN dbms_output.put_line('Fejleszto, tervezo');
+     WHEN beosztas = 'root' THEN dbms_output.put_line('Rendszergazda, (UNIX, LINUX');
+     WHEN beosztas = 'admin' THEN dbms_output.put_line('Rendszergazda(Windows');
+     WHEN beosztas = 'dba' THEN dbms_output.put_line('Adatbazis Adminisztrator');
+     WHEN beosztas = 'coder' THEN dbms_output.put_line('Programazó');
+     WHEN beosztas = 'sec' THEN dbms_output.put_line('Adminisztrator');
+     ELSE dbms_output.put_line('egyedi unkakoró');
+END CASE;
+END;
+
+
+4, 
+
+DECLARE 
+ n NUMBER := 10;
+BEGIN
+ FOR i IN 1..10 LOOP
+   dbms_output.put_line(TO_CHAR(i));
+END LOOP;
+END;
+
+
+DECLARE
+  TYPE tomb IS VARRY(3) OF NUMBER;
+
+  arak tomb := (1500000, 220000, 18000000);
+BEGIN
+  FOR i IN 1..arak.COUNT LOOP
+dbms_output.put_line(arak(i));
+END LOOP;
+END;
+
+4.Task
+
+CREATE TABLE auto (
+  rsz char(6) PRIMARY KEY,
+  tipus char(30),
+  szin char(20),
+  kor number(3),
+  ar number(10,
+);
+
+
+  
+desc auto;
+
+insert into auto values ('ABC500', 'Opel Corsa', 'piros', 8, 800000);
+insert into auto values ('MCC500', 'Opel Insignia', 'fekete', 2, 6800000);
+insert into auto values ('BBM104', 'Suzuki Swift', 'piros', 5, 1500000);
+insert into auto values ('CHR414', 'Renault Twingo', 'piros', 12, 700000);
+
+
+SELECT * FROM auto1;
+
+DECLARE
+ x number(2) := 7;
+BEGIN
+ UPDATE auto1 set ar=ar*0.9 where kor >= x;
+END;
+
+SELECT * FROM auto1;
+
+
+DECLARE
+ x auto%rowtype;
+BEGIN
+ SELECT * INTO x FROM auto1 WHERE rsz = 'ABC500';
+   dbms_output.put_line(x.ar);
+END;
+
+DECLARE
+  a auto1.rsz%type := 'SFM406';
+  b auto1.tipus%type := 'Skoda';
+  c auto1.szin%type := 'kék';
+  d auto1.kor%type := '6';
+BEGIN
+  INSERTZ INTO auto1 value (a, b, c, d);
+END;
+
+CREATE TABLE Naplo
+ (
+   Adat NUMBER(10,21),
+   Datum DATE,
+   Szemely VARCHAR(20)
+); 
+
+desc naplo
+
+DECLARE
+   x auto1.ar%TYPE;
+BEGIN
+  SELECT AVG(ar) INTO x FROM ato1;
+  INSERT INTO Naplo VALUE (x, SYSDATE, USER);
+END;
+
+select * from naplo;
+
+
+ALTER TABLE Naplo MODIFY Adat NUMBER(10,31);
+
+
+CREATE TABLE Auto2 (
+ ID number(4) PRIMARY KEY;
+ Rendszam varchar2(6),
+ Tipus varchar2(30),
+ Szin varchar2(20),
+ Kor number(10),
+Muszaki_erv date
+);
+
+desc auto2;
+BEGIN
+INSERT INTO Auto2 VALUES (1, 'ABC112', 'Opel Corsa', 'Piros', 6, TO_DATE('05.08.2024', 'DD.MM.YYYY'));
+INSERT INTO Auto2 VALUES (2, 'MCC500', 'Suzuki Swift', 'Piros', 5, TO_DATE('05.09.2024', 'DD.MM.YYYY'));
+
+CREATE OR REPLACE Procedure Atlag AS
+  b Auto2.Ar%TYPE;
+BEGIN
+SELECT AVG(Ar) INTO b FROM Auto2;
+ dbms_output.put_line(b);
+END;
+
+BEGIN
+ Atlag;
+END;
+
+
+CREATE OR REPLACE Procedure Atlag AS
+  x Auto2.Ar%TYPE;
+    xb1 varchar(30);
+BEGIN
+SELECT AVG(Ar) INTO x FROM Auto2;
+    xb1:= TO_CHAR(x, '256234565689');
+    xb1:= 
+
+
+
+CREATE OR REPLACE Procedure UjRekord (idbe
+
+
+CREATE OR REPLACE Procedure AutoModosit (idbe in number, szinbe in char) is
+BEGIN
+ UPDATE Auto2 SET Szin = szinbe WHERE ID = idbe;
+END;
+
+BEGIN
+   AutoModosit(14, 'Grafit szürke');
+END;
+
+
+CREATE OR REPLACE Function SzinAtlagAr (szinbe in char) RETURN int AS
+ atlag int:= o;
+BEGIN
+ SELECT avg (AR) INTO atlag FROM Auto2 WHERE Szin= szinbe;
+ RETURN atlag;
+END;
+ 
+SELECT SzinAtlagAr('Kek') from atlag;
+
+
+
+
+
+
+
+
+
+
+
